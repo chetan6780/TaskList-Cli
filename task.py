@@ -40,12 +40,21 @@ def Del(index: int):
 def report():
     """Statistics"""
     task_pending, task_completed = 0, 0
-    print(f"Pending : {task_pending}")
-    print("1. Pay Bills [3]")
-    print("1. Pay Bills [3]")
-    
-    print(f"\nCompleted : {task_completed}")
-    print("1. Pay Bills")
+
+    with open("task.txt", "r") as file:
+        lines = file.readlines()
+        lines_count = len(lines)
+        print(f"Pending : {lines_count}")
+        for i in range(lines_count):
+            task = lines[i].split(" ", 1)
+            print(f"{i+1}. {task[1][:-1]} [{task[0]}]" )
+            
+    with open("completed.txt", "r") as file:
+        lines = file.readlines()
+        print(f"\nCompleted : {len(lines)}")
+        for line in lines:
+            print(f"{line}", end="")
+
 
 @app.command()
 def done(task_priority: int):
