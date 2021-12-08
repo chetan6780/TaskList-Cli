@@ -4,10 +4,7 @@ from typing import Optional
 
 app = typer.Typer()
 
-# prints help when no additional args are provided
 
-
-@app.command()
 @app.command()
 def help():
     """Show usage"""
@@ -122,22 +119,22 @@ def report():
         with open("task.txt", "r") as file:
             lines = file.readlines()
             lines_count = len(lines)
-            print(f"Pending : {lines_count}")
+            typer.echo(f"Pending : {lines_count}")
             for i in range(lines_count):
                 task = lines[i].split(" ", 1)
-                print(f"{i+1}. {task[1][:-1]} [{task[0]}]")
+                typer.echo(f"{i+1}. {task[1][:-1]} [{task[0]}]")
     except FileNotFoundError:
-        print(f"Pending : {0}")
+        typer.echo(f"Pending : {0}")
 
     try:
         with open("completed.txt", "r") as file:
             lines = file.readlines()
             lines_count = len(lines)
-            print(f"\nCompleted : {len(lines)}")
+            typer.echo(f"\nCompleted : {len(lines)}")
             for i in range(lines_count):
-                print(f"{i+1}. {lines[i]}", end="")
+                typer.echo(f"{i+1}. {lines[i]}", end="")
     except FileNotFoundError:
-        print(f"\nCompleted : {0}")
+        typer.echo(f"\nCompleted : {0}")
 
 
 @app.command()
@@ -165,10 +162,10 @@ def done(index: Optional[int] = typer.Argument(-1)):
         with open("completed.txt", "a") as file:
             file.write(done_task.split(" ", 1)[1])
 
-        print("Marked item as done.")
+        typer.echo("Marked item as done.")
 
     except IndexError:
-        print(f"Error: no incomplete item with index {index} exists.")
+        typer.echo(f"Error: no incomplete item with index {index} exists.")
 
 
 if __name__ == '__main__':
