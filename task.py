@@ -132,7 +132,7 @@ def report():
             lines_count = len(lines)
             typer.echo(f"\nCompleted : {len(lines)}")
             for i in range(lines_count):
-                typer.echo(f"{i+1}. {lines[i]}", end="")
+                print(f"{i+1}. {lines[i]}", end="")
     except FileNotFoundError:
         typer.echo(f"\nCompleted : {0}")
 
