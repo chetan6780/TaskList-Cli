@@ -1,12 +1,16 @@
 import typer
+import sys
 
 app = typer.Typer()
 
+# prints help when no additional args are provided
 
+
+@app.command()
 @app.command()
 def help():
     """Show usage"""
-    print("""Usage :-
+    typer.echo("""Usage :-
 $ ./task add 2 hello world    # Add a new item with priority 2 and text "hello world" to the list
 $ ./task ls                   # Show incomplete priority list items sorted by priority in ascending order
 $ ./task del INDEX            # Delete the incomplete item with the given index
@@ -20,11 +24,11 @@ $ ./task report               # Statistics
 def add(priority: int, text: str):
     """Add a new item with priority <priority> and text <text> to the list"""
 
-    # find less than or equal to priority index
     priority_index = 0
     tasks = []
 
     try:
+        # find less than or equal to priority index
         with open("task.txt", "r") as file:
             tasks = file.readlines()
             for task in tasks:
@@ -32,28 +36,26 @@ def add(priority: int, text: str):
                 if int(task_priority) <= priority:
                     priority_index += 1
 
-            if int(priority_index) <= priority:
-                with open("task.txt", "a") as file:
-                    print(f"{priority} {text}")
-                    file.write(f"{priority} {text}\n")
-            else:
-                tasks_count = len(tasks)
-                with open("task.txt", "w") as file:
-                    for i in range(tasks_count):
-                        if i != priority_index:
-                            file.write(tasks[i])
-                        else:
-                            file.write(f"{priority} {text}\n")
-                            file.write(tasks[i])
+        # if new task has highest priority, add it to the end of the list
+        if int(priority_index) == len(tasks):
+            with open("task.txt", "a") as file:
+                file.write(f"{priority} {text}\n")
+        # Else add it after the less than or equal priority task
+        else:
+            tasks_count = len(tasks)
+            with open("task.txt", "w") as file:
+                for i in range(tasks_count):
+                    if i != priority_index:
+                        file.write(tasks[i])
+                    else:
+                        file.write(f"{priority} {text}\n")
+                        file.write(tasks[i])
 
     except FileNotFoundError:
         with open("task.txt", "a") as file:
-            print(f"{priority} {text}")
             file.write(f"{priority} {text}\n")
 
-    print(f'Added task: "{text}" with priority {priority}')
-
-    print(priority_index)
+    typer.echo(f'Added task: "{text}" with priority {priority}')
 
 
 @app.command()
@@ -140,12 +142,6 @@ def done(index: int):
 
 
 if __name__ == '__main__':
-    print("""Usage :-
-$ ./task add 2 hello world    # Add a new item with priority 2 and text "hello world" to the list
-$ ./task ls                   # Show incomplete priority list items sorted by priority in ascending order
-$ ./task del INDEX            # Delete the incomplete item with the given index
-$ ./task done INDEX           # Mark the incomplete item with the given index as complete
-$ ./task help                 # Show usage
-$ ./task report               # Statistics
-""")
+    if len(sys.argv) <= 1:
+        sys.argv.append("help")
     app()
