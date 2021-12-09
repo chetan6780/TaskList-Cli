@@ -44,7 +44,7 @@ You need to have npm installed in your computer for this problem. It comes with 
 ### 2. Install dependencies
 
 Run `npm install` to install all dependencies.
-Run `pip install requirements.txt` to install all python dependencies
+Run `pip install -r requirements.txt` to install all python dependencies
 
 .
 
