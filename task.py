@@ -13,7 +13,6 @@ $ ./task add 2 hello world    # Add a new item with priority 2 and text "hello w
 $ ./task ls                   # Show incomplete priority list items sorted by priority in ascending order
 $ ./task del INDEX            # Delete the incomplete item with the given index
 $ ./task done INDEX           # Mark the incomplete item with the given index as complete
-$ ./task undo INDEX PRIORITY  # Undo the completed task and add it with the given priority
 $ ./task help                 # Show usage
 $ ./task report               # Statistics
 """)
@@ -199,81 +198,6 @@ def done(index: Optional[int] = typer.Argument(-1)):
     # If index is Invalid
     except IndexError:
         typer.echo(f"Error: no incomplete item with index {index} exists.")
-
-
-@app.command()
-def undo(index: Optional[int] = typer.Argument(-1), priority: Optional[int] = typer.Argument(-1)):
-    """Undo the completed task and add it with the given priority"""
-
-    # If index is not specified, print Error
-    if index == -1:
-        typer.echo("Error: Missing NUMBER for marking tasks as done.")
-        exit()
-
-    # If index is 0, Print Error
-    if index == 0:
-        typer.echo("Error: no completed item with index #0 exists.")
-        exit()
-        
-    # If priority is not specified, print Error
-    if priority == -1:
-        typer.echo("Error: Missing tasks string. Nothing added!")
-        exit()
-
-    task_to_undo = ""  # Task to undo
-
-    # If index is Valid
-    try:
-        # Get Completed Task
-        with open("completed.txt", "r+") as file:
-            tasks = file.readlines()
-            task_to_undo = tasks[index - 1] # 2 will 1 in list 
-            
-        # Write the completed task list except the task to undo
-        with open("completed.txt", "w") as file:
-            for task in tasks:
-                if task != task_to_undo:
-                    file.write(task)
-
-    # If index is Invalid
-    except IndexError:
-        typer.echo(f"Error: no complete item with index {index} exists.")
-        
-    priority_index = 0
-    tasks = []  # Tasks List
-
-    # If file is already present
-    try:
-        # find less than or equal to priority index to store tasks in sorted order
-        with open("task.txt", "r") as file:
-            tasks = file.readlines()
-            for task in tasks:
-                task_priority, task_text = task.split(" ", 1)
-                if int(task_priority) <= priority:
-                    priority_index += 1
-
-        # if new task has highest(numeric) priority, add it to the end of the list
-        if int(priority_index) == len(tasks):
-            with open("task.txt", "a") as file:
-                file.write(f"{priority} {task_to_undo}")
-        # Else add it after the less than or equal priority task
-        else:
-            tasks_count = len(tasks)
-            with open("task.txt", "w") as file:
-                for i in range(tasks_count):
-                    if i != priority_index:
-                        file.write(tasks[i])
-                    else:
-                        # New task at sorted correct position
-                        file.write(f"{priority} {task_to_undo}\n")
-                        file.write(tasks[i])
-
-    # If file not present, Create a new one
-    except FileNotFoundError:
-        with open("task.txt", "w") as file:
-            file.write(f"{priority} {task_to_undo}\n")
-
-    typer.echo(f'Undone the task: "{task_to_undo}" with priority {priority}')
 
 
 if __name__ == '__main__':
