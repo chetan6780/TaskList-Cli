@@ -115,7 +115,7 @@ A few notes to help you avoid any hiccups while implementing the programming cha
    2 Complete the project
    ```
 
-3. Completed task are writted to a completed.txt file. Each task occupies a single line in this file. Each line in the file should be in this format :
+3. Completed task are written to a completed.txt file. Each task occupies a single line in this file. Each line in the file should be in this format :
 
    ```
    task

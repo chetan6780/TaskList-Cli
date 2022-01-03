@@ -22,12 +22,12 @@ $ ./task report               # Statistics
 def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = typer.Argument(None)):
     """Add a new item with priority <priority> and text <text> to the list"""
 
-    # If priority is not specified, return Error
+    # If priority is not specified, print Error
     if priority == -1:
         typer.echo("Error: Missing tasks string. Nothing added!")
         exit()
 
-    # If text is not specified, return Error
+    # If text is not specified, print Error
     if text is None:
         typer.echo("Error: Missing tasks string. Nothing added!")
         exit()
@@ -37,7 +37,7 @@ def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = type
 
     # If file is already present
     try:
-        # find less than or equal to priority index
+        # find less than or equal to priority index to store tasks in sorted order
         with open("task.txt", "r") as file:
             tasks = file.readlines()
             for task in tasks:
@@ -45,7 +45,7 @@ def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = type
                 if int(task_priority) <= priority:
                     priority_index += 1
 
-        # if new task has highest priority, add it to the end of the list
+        # if new task has highest(numeric) priority, add it to the end of the list
         if int(priority_index) == len(tasks):
             with open("task.txt", "a") as file:
                 file.write(f"{priority} {text}\n")
@@ -63,7 +63,7 @@ def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = type
 
     # If file not present, Create a new one
     except FileNotFoundError:
-        with open("task.txt", "a") as file:
+        with open("task.txt", "w") as file:
             file.write(f"{priority} {text}\n")
 
     typer.echo(f'Added task: "{text}" with priority {priority}')
@@ -73,12 +73,12 @@ def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = type
 def Del(index: Optional[int] = typer.Argument(-1)):
     """Delete the incomplete item with the given index"""
 
-    # If index is not specified, return Error
+    # If index is not specified, print Error
     if index == -1:
         typer.echo("Error: Missing NUMBER for deleting tasks.")
         exit()
 
-    # If index is 0, Return Error with not exist message
+    # If index is 0, print Error with not exist message
     if index == 0:
         typer.echo(f"Error: task with index #0 does not exist. Nothing deleted.")
         exit()
@@ -123,7 +123,7 @@ def ls():
                     task = lines[i].split(" ", 1)
                     typer.echo(f"{i+1}. {task[1][:-1]} [{task[0]}]")
 
-    # If file is present
+    # If file is not present
     except FileNotFoundError:
         typer.echo("There are no pending tasks!")
 
