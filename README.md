@@ -9,7 +9,9 @@ The specification for this problem is written down as tests. Since we haven’t 
 Here's how it should work when you're done:
 
 [![TASK-CLI](https://res.cloudinary.com/sv-co/image/upload/v1638058186/GDC/SE/Admission/gdc-home-page_b6s3go.png)](./demo.mp4)
-
+<video width="320" controls>
+  <source src="./demo.mp4" type="video/mp4">
+</video>
 <!-- https://vimeo.com/648902045 -->
 
 ## Getting started
