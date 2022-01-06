@@ -8,39 +8,33 @@ The specification for this problem is written down as tests. Since we haven’t 
 
 Here's how it should work when you're done:
 
-[![TASK-CLI](https://res.cloudinary.com/sv-co/image/upload/v1638058186/GDC/SE/Admission/gdc-home-page_b6s3go.png)](./demo.mp4)
-<video width="320" controls>
-  <source src="./demo.mp4" type="video/mp4">
-</video>
-<!-- https://vimeo.com/648902045 -->
-
+[![TASK-CLI](https://res.cloudinary.com/sv-co/image/upload/v1638058186/GDC/SE/Admission/gdc-home-page_b6s3go.png)](https://vimeo.com/648902045)
 ## Getting started
 
 1. Install Python: Python is usually installed by default on most modern systems. To check what your currently have, open a terminal and run the following command:
 
-    ```
-    python3 --version
-    ```
+   ```
+   python3 --version
+   ```
 
-    This should output some information on the installed Python version.
-    You can also install python by following these instructions: https://installpython3.com/
+   This should output some information on the installed Python version.
+   You can also install python by following these instructions: https://installpython3.com/
 
 2. You are expected to write the code in `task.py` file.
 
 3. Once you are done with the changes you should be able to execute the task app by running the following command from the terminal.
 
-    **On Windows:**
+   **On Windows:**
 
-    ```
-    .\task.bat
-    ```
+   ```
+   .\task.bat
+   ```
 
-    **On \*nix:**
+   **On \*nix:**
 
-    ```
-    ./task.sh
-    ```
-
+   ```
+   ./task.sh
+   ```
 ## Run Automated Tests
 
 ### 1. Install Node.js
@@ -106,51 +100,51 @@ A few notes to help you avoid any hiccups while implementing the programming cha
 
 2. The app should read from and write to a task.txt text file. Each task occupies a single line in this file. Each line in the file should be in this format :
 
-    ```
-    p task
-    ```
+   ```
+   p task
+   ```
 
-    where `p` is the priority ( priority will be a number) and `task` is the task description.
+   where `p` is the priority ( priority will be a number) and `task` is the task description.
 
-    > Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer, the lower the number, the higher the priority.
+   > Priority denotes how important a task is, if it is a high priority task, it should be completed earlier. Priority is denoted using an integer, the lower the number, the higher the priority.
 
-    Here is an example file that has 2 items.
+   Here is an example file that has 2 items.
 
-    ```
-    1 Buy milk
-    2 Complete the project
-    ```
+   ```
+   1 Buy milk
+   2 Complete the project
+   ```
 
 3. Completed task are written to a completed.txt file. Each task occupies a single line in this file. Each line in the file should be in this format :
 
-    ```
-    task
-    ```
+   ```
+   task
+   ```
 
-    where task is the task description.
+   where task is the task description.
 
-    Here is an example file that has 2 items.
+   Here is an example file that has 2 items.
 
-    ```
-    Buy milk
-    Complete the project
-    ```
+   ```
+   Buy milk
+   Complete the project
+   ```
 
 4. Priority can be any integer _greater than_ or _equal to_ 0. 0 being the highest priority
 
 5. If two task have the same priority, the task that was added first should be displayed first.
 
-    The application must open the files task.txt and completed.txt from where the app is run, and not where the app is located. For example, if we invoke the app like this:
+   The application must open the files task.txt and completed.txt from where the app is run, and not where the app is located. For example, if we invoke the app like this:
 
 6. The files should always be sorted in order of the priority, ie, the task with the highest priority should be first item in the file.
 
-    ```
-    $ cd /path/to/plans
+   ```
+   $ cd /path/to/plans
 
-    $ /path/to/apps/task ls
-    ```
+   $ /path/to/apps/task ls
+   ```
 
-    The application should look for the text files in `/path/to/plans`, since that is the user’s current directory.
+   The application should look for the text files in `/path/to/plans`, since that is the user’s current directory.
 
 ## Usage
 
