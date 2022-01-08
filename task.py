@@ -23,12 +23,7 @@ def add(priority: Optional[int] = typer.Argument(-1), text: Optional[str] = type
     """Add a new item with priority <priority> and text <text> to the list"""
 
     # If priority is not specified, print Error
-    if priority == -1:
-        typer.echo("Error: Missing tasks string. Nothing added!")
-        exit()
-
-    # If text is not specified, print Error
-    if text is None:
+    if priority == -1 or text is None:
         typer.echo("Error: Missing tasks string. Nothing added!")
         exit()
 
