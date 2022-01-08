@@ -27,8 +27,8 @@
 
 ## Install dependencies
 
--   `>> npm install`
--   `>> pip install -r requirements.txt`
+`>> npm install`
+`>> pip install -r requirements.txt`
 
 ## Create Create symbolic link to the executable file
 
