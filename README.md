@@ -1,6 +1,8 @@
 # TaskList - CLI
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SjMk3ipwY9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Here is the [Demo of CLI Application](https://www.youtube.com/embed/SjMk3ipwY9Y).
+
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/SjMk3ipwY9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
 <!-- [![TASK-CLI](https://res.cloudinary.com/sv-co/image/upload/v1638058186/GDC/SE/Admission/gdc-home-page_b6s3go.png)](https://vimeo.com/648902045) -->
 
@@ -27,8 +29,10 @@
 
 ## Install dependencies
 
-`>> npm install`
-`>> pip install -r requirements.txt`
+```sh
+>> npm install
+>> pip install -r requirements.txt
+```
 
 ## Create Create symbolic link to the executable file
 
