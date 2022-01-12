@@ -1,6 +1,6 @@
 # TaskList - CLI
 
-Here is the [Demo of CLI Application](https://www.youtube.com/embed/SjMk3ipwY9Y).
+Here is the [Demo of CLI Application](https://www.youtube.com/watch?v=SjMk3ipwY9Y).
 
 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/SjMk3ipwY9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
@@ -12,7 +12,7 @@ Here is the [Demo of CLI Application](https://www.youtube.com/embed/SjMk3ipwY9Y)
     ```sh
     python3 --version
     ```
--   python is installed, you should be able to run cli application by following command:
+-   If Python is installed, you should be able to run cli application by following command:
 
     -   **On Windows:**
 
@@ -38,7 +38,7 @@ Here is the [Demo of CLI Application](https://www.youtube.com/embed/SjMk3ipwY9Y)
 
 #### On Windows
 
-Run Windows Command Prompt, or Windows Powershell **with administrator privileges**.
+Run Windows Command Prompt or Windows Powershell **with administrator privileges**.
 
 **Command Prompt:**
 
@@ -64,7 +64,7 @@ Run the following command in your shell:
 
 ### 1. Help
 
-Executing the command **without any arguments**, or with a single argument **_help_** prints the **CLI usage**.
+Executing the command **without any arguments** or with a single argument **_help_** prints the **CLI usage**.
 
 ```sh
 >> ./task help
