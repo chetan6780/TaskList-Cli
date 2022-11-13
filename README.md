@@ -1,4 +1,5 @@
 # TaskList - CLI
+[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=minimatch&package-manager=npm_and_yarn&previous-version=3.0.4&new-version=3.1.2)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
 
 Here is the [Demo of CLI Application](https://www.youtube.com/watch?v=SjMk3ipwY9Y).
 
